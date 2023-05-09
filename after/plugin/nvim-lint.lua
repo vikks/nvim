@@ -1,6 +1,6 @@
 require('lint').linters_by_ft = {
-  markdown = {'vale'},
-  ruby = { 'standardrb',  }
+  markdown = { 'vale' },
+  -- ruby = { 'standardrb',  }
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

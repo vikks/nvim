@@ -16,7 +16,6 @@ local plugins = {
   -- UX
   'nvim-treesitter/nvim-treesitter',
   'mhartington/oceanic-next',
-
   {
     'dracula/vim',
     lazy = false,
@@ -24,6 +23,7 @@ local plugins = {
   'bluz71/vim-nightfly-colors',
   'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
+  'NvChad/nvim-colorizer.lua',
   -- navigation
   {
     'nvim-telescope/telescope.nvim',
@@ -45,6 +45,7 @@ local plugins = {
         -- Optional
         'williamboman/mason.nvim',
         build = function()
+          ---@diagnostic disable-next-line: param-type-mismatch
           pcall(vim.cmd, 'MasonUpdate')
         end,
       },

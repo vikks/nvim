@@ -50,6 +50,23 @@ lsp.on_attach(function(client, bufnr)
   end
 end)
 
+lsp.ensure_installed({
+  'solargraph',
+  'lua_ls',
+  'tailwindcss',
+  'emmet_ls'
+})
+
+lsp.format_on_save({
+  format_opts = {
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['lua_ls'] = { 'lua' },
+    ['solargraph'] = { 'ruby' },
+    ['emmet_ls'] = { 'eruby' }
+  }
+})
 
 lsp.setup()
 
