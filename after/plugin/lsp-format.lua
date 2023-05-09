@@ -1,0 +1,4 @@
+-- With Async lsp-format, saving and quitting in the
+-- same command `wq!` will not work.
+-- So just for this case, we format on save syncronosly and quit
+-- vim.cmd [[ cabbrev wq execute "Format sync" <bar> wq ]]
