@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- UX
- 'nvim-treesitter/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter',
   'mhartington/oceanic-next',
   {
     'dracula/vim',
@@ -99,6 +99,7 @@ local plugins = {
 
   -- misc
   'mbbill/undotree',
+  'jiangmiao/auto-pairs'
 }
 
 local opts = {}

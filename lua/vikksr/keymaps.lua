@@ -55,12 +55,3 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Replace the word under the cursor
 nmap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-
----------------------
--- vim-commentary
----------------------
---TODO: Commenting multiple lines not working
-nmap("<leader>/", "<cmd>Commentary<CR>")
-vmap("<leader>/", "<cmd>Commentary<CR>")
-
-

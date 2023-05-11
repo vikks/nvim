@@ -41,7 +41,7 @@ vopt.wrap = false
 vopt.scrolloff = 8
 
 vopt.signcolumn = 'yes'
-vopt.isfname:append("@-@")
+-- vopt.isfname:append("@-@")
 
 vopt.updatetime = 50
 
@@ -65,7 +65,7 @@ vg.wildmenu = true
 vg.hidden = true
 
 -- Set command height
-vopt.cmdheight = 0
+vopt.cmdheight = 1
 
 -- When searching try to be smart about cases
 vopt.smartcase = true
