@@ -24,6 +24,12 @@ local plugins = {
   'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
   'NvChad/nvim-colorizer.lua',
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+  },
+
   -- navigation
   {
     'nvim-telescope/telescope.nvim',
