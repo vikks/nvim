@@ -49,8 +49,8 @@ vopt.updatetime = 50
 vopt.autoread = true
 
 -- Set splits to below and right ( affects fugitive and others as well)
-vopt.splitbelow = true
-vopt.splitright = true
+-- vopt.splitbelow = true
+-- vopt.splitright = true
 
 -- Prompt before closing window, useful when working with floats and terminal buffers
 vopt.confirm = true
