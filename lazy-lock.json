@@ -25,6 +25,8 @@
   "oceanic-next": { "branch": "master", "commit": "09833f72d5ba23de2e8bcae18f479f326f5f677a" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
   "rust-tools.nvim": { "branch": "master", "commit": "71d2cf67b5ed120a0e31b2c8adb210dd2834242f" },
+  "sfm-fs.nvim": { "branch": "master", "commit": "7f34319732925d3d3f364574ea9bdd574eda59b3" },
+  "sfm-git.nvim": { "branch": "master", "commit": "248eb4b64c26eb4e6b653b04a0c6859941c4c1de" },
   "sfm.nvim": { "branch": "main", "commit": "762ee1f1ec64f50cc2a02416dad36bc5ccf8d60c" },
   "telescope.nvim": { "branch": "master", "commit": "b79cd6c88b3d96b0f49cb7d240807cd59b610cd8" },
   "undotree": { "branch": "master", "commit": "485f01efde4e22cb1ce547b9e8c9238f36566f21" },
