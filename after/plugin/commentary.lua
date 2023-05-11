@@ -1,5 +1,2 @@
---TODO: Commenting multiple lines not working
-
-vim.keymap.set("n", "<leader>/", "<cmd>Commentary<CR>")
-vim.keymap.set("n", "<leader>/", "<cmd>Commentary<CR>")
-
+vim.keymap.set("n", "<leader>/", "<Plug>CommentaryLine<CR>")
+vim.keymap.set("v", "<leader>/", "<Plug>Commentary<CR>")
