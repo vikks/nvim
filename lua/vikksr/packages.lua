@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- UX
-  'nvim-treesitter/nvim-treesitter',
+ 'nvim-treesitter/nvim-treesitter',
   'mhartington/oceanic-next',
   {
     'dracula/vim',
@@ -30,7 +30,7 @@ local plugins = {
     tag = '0.1.0',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
-  'nvim-tree/nvim-tree.lua',
+  -- 'nvim-tree/nvim-tree.lua',
   'dinhhuy258/sfm.nvim',
   'theprimeagen/harpoon',
 
