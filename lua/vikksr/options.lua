@@ -40,3 +40,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+-- Set to auto read when a file is changed from the outside
+vim.opt.autoread = true
+
