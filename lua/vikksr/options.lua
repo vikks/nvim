@@ -17,7 +17,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 -- vim.opt.undofile = true
 -- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
--- vim.cmd [[ set noswapfile ]]
 
 --Line numbers
 vim.opt.nu = true
