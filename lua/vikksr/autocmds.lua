@@ -11,8 +11,13 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 -- General settings:
 --------------------
 
--- Highlight on yank
+-- AUGroups
 augroup('YankHighlight', { clear = true })
+augroup('CursorGrp', { clear = true })
+augroup('TrackExternalFileChange', { clear = true})
+
+
+-- Highlight on yank
 autocmd('TextYankPost', {
   group = 'YankHighlight',
   callback = function()
@@ -21,7 +26,6 @@ autocmd('TextYankPost', {
 })
 
 -- Show Cursor line only on active windows and in normal mode.
-augroup('CursorGrp', { clear = true })
 autocmd({"InsertLeave", "WinEnter"}, {
   group   = 'CursorGrp',
   pattern = "*",
@@ -40,8 +44,15 @@ autocmd({"InsertEnter", "WinLeave"}, {
 -- })
 
 -- Reload the file when it's changed outside of vim
-autocmd("FocusGained",{
+autocmd("FocusGained", {
+  group = 'TrackExternalFileChange',
   command = [[:checktime]]
 })
 
-
+-- Notify when file changes outside of nvim session
+autocmd("FileChangedShellPost", {
+  group = 'TrackExternalFileChange',
+  callback = function ()
+    print("File Changed on disk, Buffer reloaded!")
+  end
+})

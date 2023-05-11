@@ -1,45 +1,83 @@
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+local vo        = vim.o
+local vopt      = vim.opt
+local vopt_global  = vim.opt_global
+local vg        = vim.g
 
-vim.opt.backspace = '2'
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.autoread = true
+vg.mapleader = ','
+vg.maplocalleader = ','
+
+vopt.backspace = '2'
+vopt.showcmd = true
+vopt.laststatus = 2
+vopt.autowrite = true
+vopt.autoread = true
 
 -- use spaces for tabs
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
+vopt.tabstop = 2
+vopt.shiftwidth = 2
+vopt.shiftround = true
+vopt.expandtab = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
+vopt.swapfile = false
+vopt.backup = false
 -- vim.opt.undofile = true
 -- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 --Line numbers
-vim.opt.nu = true
-vim.opt.relativenumber = true
+vopt.nu = true
+vopt.relativenumber = true
 
 -- search
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+vopt.hlsearch = true
+vopt.incsearch = true
 
 -- indent
-vim.opt.smartindent = true
+vopt.smartindent = true
 
 -- wrap
-vim.opt.wrap = false
+vopt.wrap = false
 
 -- Vim Context to show 
-vim.opt.scrolloff = 8
+vopt.scrolloff = 8
 
-vim.opt.signcolumn = 'yes'
-vim.opt.isfname:append("@-@")
+vopt.signcolumn = 'yes'
+vopt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vopt.updatetime = 50
 
 -- Set to auto read when a file is changed from the outside
-vim.opt.autoread = true
+vopt.autoread = true
+
+-- Set splits to below and right ( affects fugitive and others as well)
+vopt.splitbelow = true
+vopt.splitright = true
+
+-- Prompt before closing window, useful when working with floats and terminal buffers
+vopt.confirm = true
+
+-- Clipboard
+vopt.clipboard:append('unnamedplus')
+
+-- Enhance command-line completion
+vg.wildmenu = true
+
+-- Hide buffers when abandoned ( useful when refactoring )
+vg.hidden = true
+
+-- Set command height
+vopt.cmdheight = 0
+
+-- When searching try to be smart about cases
+vopt.smartcase = true
+
+-- Don't redraw while executing macros (good performance config)
+vopt.lazyredraw = true
+
+-- Show matching brackets when cursor is over them.
+vopt.showmatch = true
+
+
+-- Highlight long lines ( beyond 90 characters)
+-- TODO:
+
 

@@ -1,21 +1,31 @@
+local nmap = function(key, cmd)
+  vim.keymap.set("n", key, cmd)
+end
+local vmap = function(key, cmd)
+  vim.keymap.set("v", key, cmd)
+end
+local xmap = function(key, cmd)
+  vim.keymap.set("x", key, cmd)
+end
+
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
--- remove the search highlights
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+-- clear the search highlights
+nmap('<ESC><ESC>', ':nohlsearch<CR>')
 
 -- move selected lines/blocks up or down
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv")
+vmap('J', ":m '>+1<CR>gv=gv")
+vmap('K', ":m '>-2<CR>gv=gv")
 
 vim.keymap.set('n', "Y", "yg$")
 
 -- Cursor Position remains unchanged when using J
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Keeps the cursor in the middle when moving halp page up or down
+-- Keeps the cursor in the middle when moving half page up or down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
@@ -24,7 +34,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste what's cut
-vim.keymap.set('x', "p", "\"_dP")
+xmap("p", "\"_dP")
 
 -- Yank into the clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -44,4 +54,13 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Replace the word under the cursor
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+nmap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+---------------------
+-- vim-commentary
+---------------------
+--TODO: Commenting multiple lines not working
+nmap("<leader>/", "<cmd>Commentary<CR>")
+vmap("<leader>/", "<cmd>Commentary<CR>")
+
+
