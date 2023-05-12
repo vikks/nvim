@@ -14,7 +14,7 @@ vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
 -- clear the search highlights
-nmap('<ESC><ESC>', ':nohlsearch<CR>')
+nmap('<leader>c', ':nohlsearch<CR>')
 
 -- move selected lines/blocks up or down
 vmap('J', ":m '>+1<CR>gv=gv")

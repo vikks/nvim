@@ -13,8 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  -- UX
+  -- Parsers
   'nvim-treesitter/nvim-treesitter',
+
+  -- Colors
   'mhartington/oceanic-next',
   {
     'dracula/vim',
@@ -79,14 +81,14 @@ local plugins = {
     }
   },
 
-  'lewis6991/gitsigns.nvim',
-  'vim-test/vim-test',
-  'preservim/vimux',
+  -- git
   'tpope/vim-fugitive',
+  'lewis6991/gitsigns.nvim',
 
   -- not setup yet
+  'vim-test/vim-test',
+  'preservim/vimux',
   'christoomey/vim-tmux-navigator',
-  'tpope/vim-commentary',
 
   -- debugging
   'mfussenegger/nvim-dap',
@@ -99,7 +101,10 @@ local plugins = {
 
   -- misc
   'mbbill/undotree',
-  'jiangmiao/auto-pairs'
+  'jiangmiao/auto-pairs',
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
+  'tpope/vim-commentary',
 }
 
 local opts = {}

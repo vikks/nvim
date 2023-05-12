@@ -41,16 +41,16 @@ vopt.wrap = false
 vopt.scrolloff = 8
 
 vopt.signcolumn = 'yes'
--- vopt.isfname:append("@-@")
+vopt.isfname:append("@-@")
 
 vopt.updatetime = 50
 
 -- Set to auto read when a file is changed from the outside
 vopt.autoread = true
 
--- Set splits to below and right ( affects fugitive and others as well)
--- vopt.splitbelow = true
--- vopt.splitright = true
+-- Set splits to below and right ( affects fugitive and others alike)
+vopt.splitbelow = true
+vopt.splitright = true
 
 -- Prompt before closing window, useful when working with floats and terminal buffers
 vopt.confirm = true
@@ -65,7 +65,7 @@ vg.wildmenu = true
 vg.hidden = true
 
 -- Set command height
-vopt.cmdheight = 1
+vopt.cmdheight = 0
 
 -- When searching try to be smart about cases
 vopt.smartcase = true
@@ -76,8 +76,5 @@ vopt.lazyredraw = true
 -- Show matching brackets when cursor is over them.
 vopt.showmatch = true
 
-
--- Highlight long lines ( beyond 90 characters)
--- TODO:
-
-
+-- Highlight long lines ( beyond 80 characters)
+vim.cmd [[ match ErrorMsg '\%>80v.\+'  ]]
