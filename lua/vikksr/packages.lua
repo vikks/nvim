@@ -105,6 +105,8 @@ local plugins = {
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-commentary',
+  'wellle/targets.vim',
+  'lukas-reineke/indent-blankline.nvim'
 }
 
 local opts = {}
