@@ -20,6 +20,17 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     lsp_config[server_name].setup({})
   end,
+  ['lua_ls'] = function()
+    lsp_config.lua_ls.setup({
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          }
+        }
+      },
+    })
+  end
   -- language specific configutaion can be added as below
   -- ['tsserver'] = function()
     --require('lspconfig').tsserver.setup({
