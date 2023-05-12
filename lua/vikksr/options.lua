@@ -8,9 +8,15 @@ vg.maplocalleader = ','
 
 vopt.backspace = '2'
 vopt.showcmd = true
-vopt.laststatus = 2
+
+-- Set Status line to global
 vopt.autowrite = true
 vopt.autoread = true
+
+-- Window status line
+vopt.laststatus = 3 -- `2` for individual buffer status lines
+vim.cmd [[ highlight WinSeparator guibg=none ]]
+
 
 -- use spaces for tabs
 vopt.tabstop = 2
@@ -78,3 +84,10 @@ vopt.showmatch = true
 
 -- Highlight long lines ( beyond 80 characters)
 vim.cmd [[ match ErrorMsg '\%>80v.\+'  ]]
+
+-- Fold Methods
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
+vim.opt.foldcolumn = "auto:3"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1

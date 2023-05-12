@@ -15,6 +15,7 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 augroup('YankHighlight', { clear = true })
 augroup('CursorGrp', { clear = true })
 augroup('TrackExternalFileChange', { clear = true})
+augroup('Twilight', { clear = true})
 
 
 -- Highlight on yank
@@ -55,4 +56,11 @@ autocmd("FileChangedShellPost", {
   callback = function ()
     print("File Changed on disk, Buffer reloaded!")
   end
+})
+
+-- Enable Twilight on Buffer Enter
+autocmd('WinEnter' , {
+  group = 'Twilight',
+  pattern = '*',
+  command = [[ :TwilightEnable ]]
 })

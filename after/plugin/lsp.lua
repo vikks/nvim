@@ -8,7 +8,14 @@ local cmp = require('cmp')
 -- Configure LSP Servers
 lsp_zero.extend_lspconfig()
 mason.setup()
-mason_lspconfig.setup()
+mason_lspconfig.setup({
+  ensure_installed = {
+    'tsserver',
+    'eslint',
+    'solargraph',
+    'lua_ls'
+  }
+})
 
 -- Use for loop and call setup or use setup_handlers and call setup
 -- local get_servers = mason_lspconfig.get_installed_servers
@@ -48,7 +55,9 @@ mason_lspconfig.setup_handlers({
 
 -- Diagnostic Config
 lsp_zero.set_sign_icons()
-vim.diagnostic.config(lsp_zero.defaults.diagnostics({}))
+vim.diagnostic.config(lsp_zero.defaults.diagnostics({
+  virtual_text = true
+}))
 
 -- Snippet Config
 require('luasnip').config.set_config({

@@ -13,8 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  -- Parsers
+  -- Grammar
   'nvim-treesitter/nvim-treesitter',
+  'wellle/targets.vim',
+  -- 'sheerun/vim-polyglot',
 
   -- Colors
   'mhartington/oceanic-next',
@@ -31,7 +33,7 @@ local plugins = {
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
-
+  'folke/twilight.nvim',
   -- navigation
   {
     'nvim-telescope/telescope.nvim',
@@ -48,6 +50,7 @@ local plugins = {
   'theprimeagen/harpoon',
 
   -- lsp
+  'tpope/vim-rails',
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -105,8 +108,12 @@ local plugins = {
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-commentary',
-  'wellle/targets.vim',
-  'lukas-reineke/indent-blankline.nvim'
+  'lukas-reineke/indent-blankline.nvim',
+  'tpope/vim-abolish',
+  'tpope/vim-dispatch',
+  'tpope/vim-bundler',
+  'vim-scripts/BufOnly.vim',
+  'airblade/vim-rooter'
 }
 
 local opts = {}
