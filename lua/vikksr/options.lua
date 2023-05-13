@@ -1,20 +1,20 @@
-local vo        = vim.o
-local vopt      = vim.opt
-local vopt_global  = vim.opt_global
-local vg        = vim.g
+local vo          = vim.o
+local vopt        = vim.opt
+local vopt_global = vim.opt_global
+local vg          = vim.g
 
-vg.mapleader = ','
+vg.mapleader      = ','
 vg.maplocalleader = ','
 
-vopt.backspace = '2'
-vopt.showcmd = true
+vopt.backspace    = '2'
+vopt.showcmd      = true
 
 -- Set Status line to global
-vopt.autowrite = true
-vopt.autoread = true
+vopt.autowrite    = true
+vopt.autoread     = true
 
 -- Window status line
-vopt.laststatus = 3 -- `2` for individual buffer status lines
+vopt.laststatus   = 3 -- `2` for individual buffer status lines
 vim.cmd [[ highlight WinSeparator guibg=none ]]
 
 
@@ -43,7 +43,7 @@ vopt.smartindent = true
 -- wrap
 vopt.wrap = false
 
--- Vim Context to show 
+-- Vim Context to show
 vopt.scrolloff = 8
 
 vopt.signcolumn = 'yes'
@@ -86,10 +86,10 @@ vopt.showmatch = true
 vim.cmd [[ match ErrorMsg '\%>80v.\+'  ]]
 
 -- Fold Methods
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
-vim.opt.foldcolumn = "auto:3"
-vim.opt.foldlevel = 99
+vim.opt.foldmethod     = 'expr'
+vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+vim.opt.foldcolumn     = "auto:3"
+vim.opt.foldlevel      = 99
 vim.opt.foldlevelstart = 1
 
 -- Remember info about open buffers on close.

@@ -4,8 +4,7 @@ local lsp_config = require('lspconfig')
 local mason = require('mason')
 local mason_lspconfig = require("mason-lspconfig")
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-local luasnip_config = require('luasnip')
+local luasnip = require('luasnip')
 
 mason.setup()
 
@@ -48,7 +47,6 @@ lsp_zero.extend_lspconfig({
   },
 })
 
-
 --------------------------------------------
 -- Formatters
 --------------------------------------------
@@ -69,6 +67,7 @@ lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
   lsp_zero.buffer_autoformat()
 end)
+
 --------------------------------------------
 -- Diagnostics
 --------------------------------------------
@@ -107,21 +106,22 @@ mason_lspconfig.setup_handlers({
 -- AutoCompletion
 ----------------------------------------------
 
--- Snippet Config
-luasnip_config.config.set_config({
-  region_check_events = 'InsertEnter',
-  delete_check_events = 'InsertLeave'
-})
 
-require('luasnip.loaders.from_vscode').lazy_load()
+local cmp_action = lsp_zero.cmp_action()
 
 local cmp_config = lsp_zero.defaults.cmp_config({
   preselect = 'item',
   sources = {
     { name = 'path' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip', keyword_length = 2 },
-    { name = 'buffer',  keyword_length = 3 },
+    {
+      name = 'luasnip',
+      keyword_length = 2,
+      options = {
+        show_autosnippets = true
+      }
+    },
+    { name = 'buffer', keyword_length = 3 },
   },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -149,4 +149,5 @@ local cmp_config = lsp_zero.defaults.cmp_config({
     end
   }
 })
+
 cmp.setup(cmp_config)

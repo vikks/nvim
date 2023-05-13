@@ -41,7 +41,7 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
--- don't do anything when Q is pressed 
+-- don't do anything when Q is pressed
 vim.keymap.set("n", "Q", "<nop>")
 
 -- TODO: tmux and tmux-sessionizer setup to be done
