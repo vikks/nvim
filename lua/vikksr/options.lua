@@ -91,3 +91,6 @@ vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
 vim.opt.foldcolumn = "auto:3"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 1
+
+-- Remember info about open buffers on close.
+vim.cmd [[ set viminfo^=% ]]

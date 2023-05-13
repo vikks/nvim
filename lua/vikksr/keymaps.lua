@@ -61,3 +61,10 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+---------------- Buffers -----------------------
+-- List open buffers
+vim.keymap.set("n", "<leader>b", "<CMD>buffers<CR>")
+
+-- Close all buffers except current
+vim.keymap.set('n', "<leader>bo", "<CMD>BufOnly<CR>")

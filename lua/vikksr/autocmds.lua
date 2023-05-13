@@ -40,9 +40,15 @@ autocmd({ "InsertEnter", "WinLeave" }, {
 })
 
 -- GoTo last location of cursor when on buffer open.
--- autocmd("BufReadPost", {
---   command = [[ if line("'\"") > 1 && line("'\") <= line("$") | execute "normal! g`\"" | endif]]
--- })
+autocmd("BufReadPost", {
+  group = 'CursorGrp',
+  pattern = "*",
+  command = [[
+        if line("'\"") > 0 && line("'\"") <= line("$") |
+          execute "normal! g`\"" |
+        endif
+     ]]
+})
 
 -- Reload the file when it's changed outside of vim
 autocmd("FocusGained", {
