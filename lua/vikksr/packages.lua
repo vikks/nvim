@@ -101,7 +101,6 @@ local plugins = {
   -- Linters
   'mfussenegger/nvim-lint',
 
-
   -- misc
   'mbbill/undotree',
   'jiangmiao/auto-pairs',

@@ -5,8 +5,8 @@
 -- Define autocommands with Lua APIs
 -- See: h:api-autocmd, h:augroup
 
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
 -- General settings:
 --------------------
@@ -14,8 +14,8 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 -- AUGroups
 augroup('YankHighlight', { clear = true })
 augroup('CursorGrp', { clear = true })
-augroup('TrackExternalFileChange', { clear = true})
-augroup('Twilight', { clear = true})
+augroup('TrackExternalFileChange', { clear = true })
+-- augroup('Twilight', { clear = true })
 
 
 -- Highlight on yank
@@ -27,13 +27,13 @@ autocmd('TextYankPost', {
 })
 
 -- Show Cursor line only on active windows and in normal mode.
-autocmd({"InsertLeave", "WinEnter"}, {
+autocmd({ "InsertLeave", "WinEnter" }, {
   group   = 'CursorGrp',
   pattern = "*",
   command = 'set cursorline',
 })
 
-autocmd({"InsertEnter", "WinLeave"}, {
+autocmd({ "InsertEnter", "WinLeave" }, {
   group   = 'CursorGrp',
   pattern = "*",
   command = 'set nocursorline',
@@ -53,14 +53,14 @@ autocmd("FocusGained", {
 -- Notify when file changes outside of nvim session
 autocmd("FileChangedShellPost", {
   group = 'TrackExternalFileChange',
-  callback = function ()
+  callback = function()
     print("File Changed on disk, Buffer reloaded!")
   end
 })
 
 -- Enable Twilight on Buffer Enter
-autocmd('WinEnter' , {
-  group = 'Twilight',
-  pattern = '*',
-  command = [[ :TwilightEnable ]]
-})
+-- autocmd('WinEnter', {
+--   group = 'Twilight',
+--   pattern = '*',
+--   command = [[ :TwilightEnable ]]
+-- })
