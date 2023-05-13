@@ -41,7 +41,8 @@ local plugins = {
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
   -- 'nvim-tree/nvim-tree.lua',
-  { 'dinhhuy258/sfm.nvim',
+  {
+    'dinhhuy258/sfm.nvim',
     dependencies = {
       "dinhhuy258/sfm-fs.nvim",
       "dinhhuy258/sfm-git.nvim"
@@ -112,7 +113,8 @@ local plugins = {
   'tpope/vim-dispatch',
   'tpope/vim-bundler',
   'vim-scripts/BufOnly.vim',
-  'airblade/vim-rooter'
+  'airblade/vim-rooter',
+  "folke/which-key.nvim"
 }
 
 local opts = {}

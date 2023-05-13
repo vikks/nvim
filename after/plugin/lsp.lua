@@ -48,11 +48,6 @@ lsp_zero.extend_lspconfig({
   },
 })
 
--- Format on save (Synchronous)
-lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr })
-  lsp_zero.buffer_autoformat()
-end)
 
 --------------------------------------------
 -- Formatters
@@ -69,6 +64,11 @@ lsp_zero.format_mapping('<leader>f', {
   }
 })
 
+-- Format on save (Synchronous)
+lsp_zero.on_attach(function(_, bufnr)
+  lsp_zero.default_keymaps({ buffer = bufnr })
+  lsp_zero.buffer_autoformat()
+end)
 --------------------------------------------
 -- Diagnostics
 --------------------------------------------
