@@ -112,8 +112,6 @@ local cmp_action = lsp_zero.cmp_action()
 local cmp_config = lsp_zero.defaults.cmp_config({
   preselect = 'item',
   sources = {
-    { name = 'path' },
-    { name = 'nvim_lsp' },
     {
       name = 'luasnip',
       keyword_length = 2,
@@ -121,7 +119,9 @@ local cmp_config = lsp_zero.defaults.cmp_config({
         show_autosnippets = true
       }
     },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'path' },
+    { name = 'nvim_lsp' },
+    { name = 'buffer',  keyword_length = 3 },
   },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
