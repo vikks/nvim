@@ -1,15 +1,21 @@
-require("telescope").setup()
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
+
+telescope.setup()
+
+-- Use FZF for all fuzzy searching, sorting, ...
+telescope.load_extension('fzf')
+
 --------------------------------------------
--- Find 
+-- Find
 --------------------------------------------
 
 -- Find all files within the project
 vim.keymap.set("n", "<leader>fp", builtin.find_files, {})
 
 -- Find files while honoring .gitignore
-vim.keymap.set("n", "<C-p>",      builtin.git_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 
 -- Find within recetly opened files
 vim.keymap.set("n", "<leader>fr", builtin.oldfiles, {})

@@ -8,12 +8,12 @@ sfm_explorer:load_extension("sfm-fs", {
   mappings = {
     custom_only = false,
     list = {
-      { key = 'n', action = 'create'},
-      { key = 'c', action = 'copy'},
-      { key = 'm', action = 'move'},
-      { key = 'd', action = 'delete'},
+      { key = 'n', action = 'create' },
+      { key = 'c', action = 'copy' },
+      { key = 'm', action = 'move' },
+      { key = 'd', action = 'delete' },
     }
   }
 })
 
-vim.keymap.set('n', '<c-n>', ':SFMToggle<CR>')
+vim.keymap.set('n', '<leader>e', ':SFMToggle<CR>')

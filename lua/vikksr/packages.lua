@@ -40,6 +40,11 @@ local plugins = {
     tag = '0.1.0',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    lazy = false,
+  },
   -- 'nvim-tree/nvim-tree.lua',
   {
     'dinhhuy258/sfm.nvim',
