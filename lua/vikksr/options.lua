@@ -71,7 +71,7 @@ vg.wildmenu = true
 vg.hidden = true
 
 -- Set command height
-vopt.cmdheight = 0
+vopt.cmdheight = 2
 
 -- When searching try to be smart about cases
 vopt.smartcase = true
