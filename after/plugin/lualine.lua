@@ -10,6 +10,50 @@ local fileformat = function()
   return ret
 end
 
+-- vim.api.nvim_create_user_command('ListFormatters', function()
+--   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
+
+--   local formatters = vim.tbl_filter(function(c)
+--     return c.supports_method('textDocument/formatting')
+--   end, clients)
+
+--   formatters = vim.tbl_map(function(c) return c.name end, formatters)
+
+--   if #formatters > 0 then
+--     fmts = vim.inspect(formatters)
+--     print(fmts)
+--     return fmts
+--   else
+--     print('No formatters active in current buffer')
+--     return "No Formatters Found"
+--   end
+-- end, {})
+
+local fmtrs = {
+  function()
+    local msg = 'No Formatters Found'
+    local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
+
+    local formatters = vim.tbl_filter(function(c)
+      return c.supports_method('textDocument/formatting')
+    end, clients)
+
+    formatters = vim.tbl_map(function(c)
+      return c.name
+    end, formatters)
+
+    if #formatters > 0 then
+      local fmts = vim.inspect(formatters)
+      -- print(fmts)
+      -- return fmts
+    else
+      -- print(msg)
+      -- return msg
+    end
+  end,
+  -- icon = 'Fmtr:',
+  color = { fg = '#ffffff', gui = 'bold' }
+}
 
 local lsp = {
   function()
@@ -47,7 +91,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { 'filename' },
-    lualine_x = { lsp, encoding, fileformat, 'filetype' },
+    lualine_x = { lsp, fmtrs, encoding, fileformat, 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },

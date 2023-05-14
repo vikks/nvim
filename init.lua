@@ -1,7 +1,10 @@
 ----------------------------------------------------------
 -- Requirements
 ----------------------------------------------------------
--- System: fzf, solargraph
+-- System: fzf (brew)
+--         solargraph (gem)
+--         prettierd (npm -g / brew)
+--         tmux (brew)
 
 require("vikksr.options")
 require("vikksr.keymaps")

@@ -5,6 +5,9 @@ local mason = require('mason')
 local mason_lspconfig = require("mason-lspconfig")
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local mason_null_ls = require("mason-null-ls")
+local null_ls = require('null-ls')
+
 
 mason.setup()
 
@@ -14,12 +17,16 @@ mason_lspconfig.setup({
     'tsserver',
     'eslint',
     'solargraph',
-    'lua_ls'
+    'lua_ls',
+    'tailwindcss'
   }
 })
 
 -- Configure LSP Servers
 lsp_zero.extend_lspconfig({
+  -- init_options = {
+  --   documentFormatting = false
+  -- },
   on_attach = function(_, bufnr)
     local opts = { buffer = bufnr }
     vim.keymap.set('n', '<space>e', vim.lsp.diagnostic.open_float)
@@ -37,36 +44,68 @@ lsp_zero.extend_lspconfig({
     vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   end,
-  capabilities = {
-    textDocument = {
-      foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly     = true
-      }
-    }
-  },
+  -- capabilities = {
+  --   textDocument = {
+  --     foldingRange = {
+  --       dynamicRegistration = false,
+  --       lineFoldingOnly     = true
+  --     }
+  --   }
+  -- },
 })
 
 --------------------------------------------
 -- Formatters
 --------------------------------------------
+
+-- Format on save (Synchronous)
+lsp_zero.on_attach(function(_, bufnr)
+  lsp_zero.default_keymaps({ buffer = bufnr })
+  -- lsp_zero.buffer_autoformat() -- null-ls takes over formatting
+end)
+
+-- Format on save (Synchronous)
 -- Set language specififc Format servers explicitly.
-lsp_zero.format_mapping('<leader>f', {
+lsp_zero.format_on_save({
   format_opts = {
     async = true,
     timeout_ms = 10000,
   },
   servers = {
     ['lua_ls'] = { 'lua' },
-    -- ['prettier'] = { 'javascript' }
+    ['null-ls'] = {
+      'javascript',
+      'typescript',
+      'typescriptreact',
+      'javascriptreact'
+    }
   }
 })
 
--- Format on save (Synchronous)
-lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr })
-  lsp_zero.buffer_autoformat()
-end)
+
+null_ls.setup({
+  sources = {
+    -- Replace these with the tools you want to install
+    -- null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.formatting.prettierd,
+  }
+})
+
+mason_null_ls.setup({
+  ensure_installed = nil,
+  automatic_installation = true,
+})
+
+-- Set language specififc Format servers explicitly.
+-- lsp_zero.format_mapping('<leader>fs', {
+--   format_opts = {
+--     async = true,
+--     timeout_ms = 10000,
+--   },
+--   servers = {
+--     ['lua_ls'] = { 'lua' },
+--   }
+-- })
 
 --------------------------------------------
 -- Diagnostics
