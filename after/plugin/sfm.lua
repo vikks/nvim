@@ -8,7 +8,7 @@ sfm_explorer:load_extension("sfm-fs", {
   mappings = {
     custom_only = false,
     list = {
-      { key = 'n', action = 'create' },
+      { key = 'a', action = 'create' },
       { key = 'c', action = 'copy' },
       { key = 'm', action = 'move' },
       { key = 'd', action = 'delete' },
