@@ -57,7 +57,6 @@ local plugins = {
 
   -- lsp
   'tpope/vim-rails',
-  'MunifTanjim/prettier.nvim',
   {
     "jay-babu/mason-null-ls.nvim",
     dependencies = {
@@ -96,6 +95,8 @@ local plugins = {
 
       -- Formatters
       -- "lukas-reineke/lsp-format.nvim",
+      -- 'mhartington/formatter.nvim',
+      'MunifTanjim/prettier.nvim',
       "jose-elias-alvarez/null-ls.nvim",
     }
   },

@@ -92,8 +92,10 @@ null_ls.setup({
 })
 
 mason_null_ls.setup({
-  ensure_installed = nil,
-  automatic_installation = true,
+  ensure_installed = {
+    'prettierd'
+  },
+  automatic_installation = false,
 })
 
 -- Set language specififc Format servers explicitly.
