@@ -34,6 +34,7 @@ local plugins = {
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
   'folke/twilight.nvim',
+
   -- navigation
   {
     'nvim-telescope/telescope.nvim',
@@ -45,7 +46,6 @@ local plugins = {
     build = 'make',
     lazy = false,
   },
-  -- 'nvim-tree/nvim-tree.lua',
   {
     'dinhhuy258/sfm.nvim',
     dependencies = {
@@ -117,6 +117,11 @@ local plugins = {
 
   -- Linters
   'mfussenegger/nvim-lint',
+
+  -- Ui (Optional)
+  'j-hui/fidget.nvim',
+  'arkav/lualine-lsp-progress',
+
 
   -- misc
   'mbbill/undotree',
