@@ -10,6 +10,7 @@ require("vikksr.options")
 require("vikksr.keymaps")
 require("vikksr.packages")
 require("vikksr.autocmds")
+require("vikksr.user-commands")
 
 
 -- TODO
