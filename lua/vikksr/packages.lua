@@ -56,6 +56,7 @@ local plugins = {
 
   -- lsp
   'tpope/vim-rails',
+  "jose-elias-alvarez/null-ls.nvim",
   {
     "jay-babu/mason-null-ls.nvim",
     dependencies = {
