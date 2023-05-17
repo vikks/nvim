@@ -100,6 +100,14 @@ local plugins = {
       "jose-elias-alvarez/null-ls.nvim",
     }
   },
+  {
+    "glepnir/lspsaga.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    },
+  },
 
   -- git
   'tpope/vim-fugitive',

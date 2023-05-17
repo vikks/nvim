@@ -7,7 +7,14 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local mason_null_ls = require("mason-null-ls")
 local null_ls = require('null-ls')
+local lsp_saga = require("lspsaga")
 
+lsp_saga.setup({
+  diagnostic = {
+    on_insert = true,
+    on_insert_follow = false
+  },
+})
 
 mason.setup()
 
@@ -27,23 +34,8 @@ lsp_zero.extend_lspconfig({
   -- init_options = {
   --   documentFormatting = false
   -- },
-  on_attach = function(_, bufnr)
-    local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<space>e', vim.lsp.diagnostic.open_float)
-    vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev)
-    vim.keymap.set('n', ']d', vim.lsp.diagnostic.goto_next)
-    vim.keymap.set('n', '<space>q', vim.lsp.diagnostic.setloclist)
-
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', '<leader>gI', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  end,
+  -- on_attach = function(_, bufnr)
+  -- end,
   -- capabilities = {
   --   textDocument = {
   --     foldingRange = {
@@ -54,34 +46,73 @@ lsp_zero.extend_lspconfig({
   -- },
 })
 
---------------------------------------------
--- Formatters
---------------------------------------------
-
--- Format on save (Synchronous)
+-- Ovverwrite lsp_zero on_attach.
 lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr })
-  -- lsp_zero.buffer_autoformat() -- null-ls takes over formatting
+  -- if one formatter per file is used, order is not guranteed is used with multiple
+  -- formatters for a single file.
+  -- lsp.default_keymaps({buffer = bufnr})
+  local opts = { buffer = bufnr, remap = false }
+
+  -- Navigation ------------------------------------------------
+
+  -- <C-w>w
+  vim.keymap.set('n', 'K', "<CMD>Lspsaga hover_doc ++keep<CR>", opts)
+
+  -- goto: Definition
+  -- vim.keymap.set('n', 'gd', "<CMD>Lspsaga goto_definition<CR>", opts)
+  vim.keymap.set('n', 'gd', "<CMD>Lspsaga peek_definition<CR>", opts)
+
+  -- goto: Type Definition <C-t>
+  -- vim.keymap.set('n', 'gt', "<CMD>Lspsaga goto_type_definition<CR>", opts)
+  vim.keymap.set('n', 'gt', "<CMD>Lspsaga peek_type_definition<CR>", opts)
+
+  -- goto: outline (toggle)
+  vim.keymap.set('n', 'go', "<CMD>Lspsaga outline<CR>", opts)
+
+  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+  vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+  vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
+
+  -- Diagnostics ------------------------------------------------
+
+  vim.keymap.set('n', '<space>dl', "<CMD>Lspsaga show_line_diagnostics<CR>", opts)
+  vim.keymap.set('n', '<space>db', "<CMD>Lspsaga show_buf_diagnostics<CR>", opts)
+  vim.keymap.set('n', '<space>dw', "<CMD>Lspsaga show_workspace_diagnostics<CR>", opts)
+  vim.keymap.set('n', '<space>dc', "<CMD>Lspsaga show_cursor_diagnostics<CR>", opts)
+  -- vim.keymap.set('n', '<space>e', function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set('n', '<space>e', function() vim.diagnostic.setloclist() end, opts)
+  vim.keymap.set('n', '[d', "<CMD>Lspsaga diagnostic_jump_prev<CR>", opts)
+  vim.keymap.set('n', ']d', "<CMD>Lspsaga diagnostic_jump_next<CR>", opts)
+  vim.keymap.set("n", "[e", function()
+    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  end)
+  vim.keymap.set("n", "]e", function()
+    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+  end)
+
+  -- Actions
+  vim.keymap.set('n', '<leader>ca', "<CMD>Lspsaga code_action<CR>", opts)
+  vim.keymap.set('v', '<leader>ca', "<CMD>Lspsaga code_action<CR>", opts)
+  vim.keymap.set('n', '<leader>rf', "<CMD>Lspsaga rename<CR>", opts)
+  vim.keymap.set('n', '<leader>rp', "<CMD>Lspsaga rename ++project<CR>", opts)
+
+  -- Workspace
+  vim.keymap.set('n', '<leader>wa', function() vim.lsp.buf.add_workspace_folder() end, opts)
+  vim.keymap.set('n', '<leader>wr', function() vim.lsp.buf.remove_workspace_folder() end, opts)
+  vim.keymap.set('n', '<leader>ws', function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts)
+  -- vim.keymap.set("n", "<leader>f", function()
+  --   -- vim.lsp.buf.format()
+  --   vim.lsp.buf.format({ async = true, timeout_ms = 3000 })
+  -- end)
 end)
 
--- Format on save (Synchronous)
--- Set language specififc Format servers explicitly.
-lsp_zero.format_on_save({
-  format_opts = {
-    async = true,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['lua_ls'] = { 'lua' },
-    ['null-ls'] = {
-      'javascript',
-      'typescript',
-      'typescriptreact',
-      'javascriptreact'
-    }
-  }
-})
-
+--------------------------------------------
+-- Formatters (null-ls)
+--------------------------------------------
 
 null_ls.setup({
   sources = {
@@ -91,23 +122,39 @@ null_ls.setup({
   }
 })
 
+-- Manually List Formatters here
 mason_null_ls.setup({
   ensure_installed = {
+    'lua_ls',
     'prettierd'
   },
   automatic_installation = false,
 })
 
+local fmt_opts = function()
+  return {
+    format_opts = {
+      async = true,
+      timeout_ms = 10000,
+    },
+    servers = {
+      ['lua_ls'] = { 'lua' },
+      ['null-ls'] = {
+        'javascript',
+        'typescript',
+        'typescriptreact',
+        'javascriptreact'
+      }
+    }
+  }
+end
+
+-- Format on save (Synchronous)
 -- Set language specififc Format servers explicitly.
--- lsp_zero.format_mapping('<leader>fs', {
---   format_opts = {
---     async = true,
---     timeout_ms = 10000,
---   },
---   servers = {
---     ['lua_ls'] = { 'lua' },
---   }
--- })
+lsp_zero.format_on_save(fmt_opts())
+
+-- Set language specififc Format servers explicitly.
+lsp_zero.format_mapping('<leader>fs', fmt_opts())
 
 --------------------------------------------
 -- Diagnostics
