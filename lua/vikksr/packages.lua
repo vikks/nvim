@@ -26,7 +26,6 @@ local plugins = {
   },
   'bluz71/vim-nightfly-colors',
   'nvim-tree/nvim-web-devicons',
-  'nvim-lualine/lualine.nvim',
   'NvChad/nvim-colorizer.lua',
   {
     'akinsho/bufferline.nvim',
@@ -132,6 +131,7 @@ local plugins = {
 
 
   -- misc
+  'nvim-lualine/lualine.nvim',
   'mbbill/undotree',
   'jiangmiao/auto-pairs',
   'tpope/vim-surround',

@@ -144,7 +144,8 @@ local fmt_opts = function()
         'typescript',
         'typescriptreact',
         'javascriptreact'
-      }
+      },
+      ['solargraph'] = { 'ruby' }
     }
   }
 end
