@@ -2,12 +2,19 @@
 
 function ColorScheme(color)
   vim.o.termguicolors = true
-  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-  if buf_ft == 'ruby' or buf_ft == 'rb' then
-    color = 'OceanicNext'
+  -- local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  -- if buf_ft == 'ruby' or buf_ft == 'rb' then
+  --   color = 'OceanicNext'
+  -- else
+  --   color =  color or 'dracula'
+  -- end
+
+  if (vim.fn.has('macunix')) then
+    color = color or 'nightfly'
   else
-    color =  color or 'dracula'
+    color = color or 'dracula'
   end
+
   vim.cmd.colorscheme(color)
 
   -- Set transparent background
