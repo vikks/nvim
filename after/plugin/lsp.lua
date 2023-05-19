@@ -25,7 +25,8 @@ mason_lspconfig.setup({
     'eslint',
     'solargraph',
     'lua_ls',
-    'tailwindcss'
+    'tailwindcss',
+    'astro'
   }
 })
 
@@ -146,6 +147,7 @@ local fmt_opts = function()
         'javascriptreact',
         'markdown',
       },
+      ['astro-language-server'] = { 'astro' },
       ['solargraph'] = { 'ruby' }
     }
   }
