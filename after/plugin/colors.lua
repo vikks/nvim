@@ -9,10 +9,10 @@ function ColorScheme(color)
   --   color =  color or 'dracula'
   -- end
 
-  if (vim.fn.has('macunix')) then
-    color = color or 'nightfly'
-  else
+  if (vim.loop.os_uname().sysname == "Linux") then
     color = color or 'dracula'
+  else
+    color = color or 'nightfly'
   end
 
   vim.cmd.colorscheme(color)
