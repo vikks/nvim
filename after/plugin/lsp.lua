@@ -143,7 +143,8 @@ local fmt_opts = function()
         'javascript',
         'typescript',
         'typescriptreact',
-        'javascriptreact'
+        'javascriptreact',
+        'markdown',
       },
       ['solargraph'] = { 'ruby' }
     }
