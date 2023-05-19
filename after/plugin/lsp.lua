@@ -165,7 +165,12 @@ lsp_zero.format_mapping('<leader>fs', fmt_opts())
 --------------------------------------------
 lsp_zero.set_sign_icons()
 vim.diagnostic.config(lsp_zero.defaults.diagnostics({
-  virtual_text = true
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
 }))
 
 
