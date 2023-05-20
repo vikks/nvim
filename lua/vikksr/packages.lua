@@ -119,9 +119,9 @@ local plugins = {
   -- 'christoomey/vim-tmux-navigator',
 
   -- debugging
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'simrat39/rust-tools.nvim',
+  -- 'mfussenegger/nvim-dap',
+  -- 'rcarriga/nvim-dap-ui',
+  -- 'simrat39/rust-tools.nvim',
 
   -- Linters
   -- 'mfussenegger/nvim-lint',
@@ -144,7 +144,6 @@ local plugins = {
   'tpope/vim-bundler',
   'vim-scripts/BufOnly.vim',
   'airblade/vim-rooter',
-  "folke/which-key.nvim"
 }
 
 local opts = {}
