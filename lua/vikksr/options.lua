@@ -73,7 +73,7 @@ vg.wildmenu = true
 vim.cmd [[ set nohidden ]]
 
 -- Set command height
-vopt.cmdheight = 1
+vopt.cmdheight = 0
 
 -- When searching try to be smart about cases
 vopt.smartcase = true

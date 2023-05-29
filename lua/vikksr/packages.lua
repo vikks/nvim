@@ -51,6 +51,10 @@ local plugins = {
     lazy = false,
   },
   {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+  {
     'dinhhuy258/sfm.nvim',
     dependencies = {
       "dinhhuy258/sfm-fs.nvim",
@@ -124,12 +128,12 @@ local plugins = {
   'christoomey/vim-tmux-navigator',
 
   -- debugging
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'simrat39/rust-tools.nvim',
+  -- 'mfussenegger/nvim-dap',
+  -- 'rcarriga/nvim-dap-ui',
+  -- 'simrat39/rust-tools.nvim',
 
   -- Linters
-  'mfussenegger/nvim-lint',
+  -- 'mfussenegger/nvim-lint',
 
   -- Ui (Optional)
   'j-hui/fidget.nvim',

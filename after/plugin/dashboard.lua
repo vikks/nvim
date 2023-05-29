@@ -126,7 +126,8 @@ local function menu()
     dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
     dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
     dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-    dashboard.button("s", "  > Settings", ":e $MYVIMRC <CR>"),
+    dashboard.button("s", "  > Settings",
+      ":lua require('telescope.builtin').find_files({ cwd = '~/.config/nvim', prompt_title='Nvim Settings' }) <CR>"),
     dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 
   }
