@@ -43,7 +43,10 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
-    dependencies = { { 'nvim-lua/plenary.nvim' } }
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      "tsakirist/telescope-lazy.nvim",
+    }
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -123,9 +126,9 @@ local plugins = {
   'lewis6991/gitsigns.nvim',
 
   -- not setup yet
-  'vim-test/vim-test',
-  'preservim/vimux',
-  'christoomey/vim-tmux-navigator',
+  -- 'vim-test/vim-test',
+  -- 'preservim/vimux',
+  -- 'christoomey/vim-tmux-navigator',
 
   -- debugging
   -- 'mfussenegger/nvim-dap',
