@@ -16,7 +16,7 @@ local plugins = {
   -- Grammar
   'nvim-treesitter/nvim-treesitter',
   'wellle/targets.vim',
-  -- 'sheerun/vim-polyglot',
+  'sheerun/vim-polyglot',
 
   -- Colors
   'mhartington/oceanic-next',
@@ -34,6 +34,11 @@ local plugins = {
   },
   'folke/twilight.nvim',
 
+  -- Dashboard
+  {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+  },
   -- navigation
   {
     'nvim-telescope/telescope.nvim',
@@ -85,7 +90,7 @@ local plugins = {
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-buffer' },
-      { "github/copilot.vim" },
+      -- { "github/copilot.vim" },
 
       -- Snippets
       { 'L3MON4D3/LuaSnip' }, -- Required
@@ -144,7 +149,7 @@ local plugins = {
   'tpope/vim-bundler',
   'vim-scripts/BufOnly.vim',
   'airblade/vim-rooter',
-  "folke/which-key.nvim"
+  "folke/which-key.nvim",
 }
 
 local opts = {}

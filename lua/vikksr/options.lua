@@ -68,10 +68,12 @@ vopt.clipboard:append('unnamedplus')
 vg.wildmenu = true
 
 -- Hide buffers when abandoned ( useful when refactoring )
-vg.hidden = true
+-- vg.hidden = true
+-- vg.nohidden = true
+vim.cmd [[ set nohidden ]]
 
 -- Set command height
-vopt.cmdheight = 2
+vopt.cmdheight = 1
 
 -- When searching try to be smart about cases
 vopt.smartcase = true
@@ -83,14 +85,14 @@ vopt.lazyredraw = true
 vopt.showmatch = true
 
 -- Highlight long lines ( beyond 80 characters)
-vim.cmd [[ match ErrorMsg '\%>80v.\+'  ]]
+-- vim.cmd [[ match ErrorMsg '\%>80v.\+'  ]]
 
 -- Fold Methods
-vim.opt.foldmethod     = 'expr'
-vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-vim.opt.foldcolumn     = "auto:3"
-vim.opt.foldlevel      = 99
-vim.opt.foldlevelstart = 1
+-- vim.opt.foldmethod     = 'expr'
+-- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldcolumn     = "auto:3"
+-- vim.opt.foldlevel      = 99
+-- vim.opt.foldlevelstart = 1
 
 -- Remember info about open buffers on close.
 vim.cmd [[ set viminfo^=% ]]

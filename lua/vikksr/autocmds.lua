@@ -15,20 +15,7 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 augroup('YankHighlight', { clear = true })
 augroup('CursorGrp', { clear = true })
 augroup('TrackExternalFileChange', { clear = true })
-augroup('Dashboard', { clear = true })
 -- augroup('Twilight', { clear = true })
-
--- Open Telescope when vim launches without args
-autocmd('VimEnter', {
-  group = 'Dashboard',
-  callback = function()
-    if #vim.fn.argv() == 0 then
-      vim.defer_fn(function()
-        vim.cmd("silent! lua require('telescope.builtin').find_files()")
-      end, 500)
-    end
-  end
-})
 
 -- Highlight on yank
 autocmd('TextYankPost', {
@@ -82,3 +69,4 @@ autocmd("FileChangedShellPost", {
 --   pattern = '*',
 --   command = [[ :TwilightEnable ]]
 -- })
+--

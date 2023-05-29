@@ -72,7 +72,7 @@ lsp_zero.on_attach(function(_, bufnr)
   vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
   vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
+  -- vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts)
 
   -- Diagnostics ------------------------------------------------
 
@@ -117,7 +117,7 @@ end)
 null_ls.setup({
   sources = {
     -- Replace these with the tools you want to install
-    -- null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.formatting.prettierd,
   }
 })
