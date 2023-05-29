@@ -7,6 +7,7 @@ telescope.setup()
 -- Use FZF for all fuzzy searching, sorting, ...
 telescope.load_extension('fzf')
 telescope.load_extension('lazy')
+
 --------------------------------------------
 -- Find
 --------------------------------------------
