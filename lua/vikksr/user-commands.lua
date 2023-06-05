@@ -16,3 +16,8 @@ vim.api.nvim_create_user_command('ListFormatters', function()
     print('No formatters active in current buffer')
   end
 end, {})
+
+-- Open Nvim Config files in telescope.
+vim.api.nvim_create_user_command('Config', function()
+  vim.cmd [[ lua require('telescope.builtin').find_files({ cwd = '~/.config/nvim', prompt_title='Nvim Settings' })]]
+end, {})
