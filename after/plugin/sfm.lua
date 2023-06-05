@@ -23,11 +23,13 @@ sfm_explorer:load_extension('sfm-filter', {
   },
 })
 -- image pasting works only in MacOS with `pngpaste` lib.
-sfm_explorer:load_extension('sfm-paste', {
-  mappings = {
-    paste = { "<C-v>", "p" }
-  }
-})
+if not (vim.loop.os_uname().sysname == "Linux") then
+  sfm_explorer:load_extension('sfm-paste', {
+    mappings = {
+      paste = { "<C-v>", "p" }
+    }
+  })
+end
 
 
 vim.keymap.set('n', '<leader>e', ':SFMToggle<CR>')
