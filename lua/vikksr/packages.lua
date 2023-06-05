@@ -57,7 +57,9 @@ local plugins = {
     'dinhhuy258/sfm.nvim',
     dependencies = {
       "dinhhuy258/sfm-fs.nvim",
-      "dinhhuy258/sfm-git.nvim"
+      "dinhhuy258/sfm-git.nvim",
+      "dinhhuy258/sfm-filter.nvim",
+      "dinhhuy258/sfm-paste.nvim",
     },
   },
   'theprimeagen/harpoon',

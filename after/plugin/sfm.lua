@@ -6,7 +6,7 @@ sfm_explorer:load_extension("sfm-fs", {
     render_selection_in_sign = true
   },
   mappings = {
-    custom_only = false,
+    custom_only = true,
     list = {
       { key = 'a', action = 'create' },
       { key = 'c', action = 'copy' },
@@ -15,5 +15,19 @@ sfm_explorer:load_extension("sfm-fs", {
     }
   }
 })
+sfm_explorer:load_extension('sfm-filter', {
+  show_hidden = true,
+  ignore_names = {},
+  mappings = {
+    toggle_filter = { '.' }
+  },
+})
+-- image pasting works only in MacOS with `pngpaste` lib.
+sfm_explorer:load_extension('sfm-paste', {
+  mappings = {
+    paste = { "<C-v>", "p" }
+  }
+})
+
 
 vim.keymap.set('n', '<leader>e', ':SFMToggle<CR>')

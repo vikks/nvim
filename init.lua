@@ -5,6 +5,7 @@
 --         solargraph (gem)
 --         prettierd (npm -g / brew)
 --         tmux (brew)
+--         pngpaste (brew) (MacOS)
 
 require("vikksr.options")
 require("vikksr.keymaps")
