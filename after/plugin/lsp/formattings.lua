@@ -17,7 +17,8 @@ null_ls.setup({
 mason_null_ls.setup({
   ensure_installed = {
     'lua_ls',
-    'prettierd'
+    'prettierd',
+    'prisma-language-server',
   },
   automatic_installation = false,
 })
@@ -37,6 +38,7 @@ local fmt_opts = function()
         'javascriptreact',
         'markdown',
       },
+      ['prisma-language-server'] = { 'prisma' },
       ['astro-language-server'] = { 'astro' },
       ['solargraph'] = { 'ruby' }
     }

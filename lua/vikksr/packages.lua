@@ -137,7 +137,7 @@ local plugins = {
   -- 'mfussenegger/nvim-lint',
 
   -- Ui (Optional)
-  'j-hui/fidget.nvim',
+  { 'j-hui/fidget.nvim', tag = 'legacy' },
   'arkav/lualine-lsp-progress',
 
 
@@ -155,6 +155,7 @@ local plugins = {
   'vim-scripts/BufOnly.vim',
   'airblade/vim-rooter',
   "folke/which-key.nvim",
+  'metakirby5/codi.vim'
 }
 
 local opts = {}

@@ -15,6 +15,7 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 augroup('YankHighlight', { clear = true })
 augroup('CursorGrp', { clear = true })
 augroup('TrackExternalFileChange', { clear = true })
+augroup('DetectFileType', { clear = true })
 -- augroup('Twilight', { clear = true })
 
 -- Highlight on yank
@@ -70,3 +71,15 @@ autocmd("FileChangedShellPost", {
 --   command = [[ :TwilightEnable ]]
 -- })
 --
+
+-- Prisma file specific settings
+autocmd({ 'BufNewFile', 'BufRead' }, {
+  group    = 'DetectFileType',
+  pattern  = '*.prisma',
+  callback = function()
+    vim.cmd('setlocal filetype=prisma')
+    vim.cmd('setlocal iskeyword+=@-@')
+    vim.cmd('setlocal comments=://')
+    vim.cmd('setlocal commentstring=//%s')
+  end
+})
