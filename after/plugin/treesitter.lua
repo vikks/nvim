@@ -19,11 +19,14 @@ require 'nvim-treesitter.configs'.setup {
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI
   -- installed locally
-  auto_install = true,
+  auto_install = false,
   highlight = {
     enable = true,
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4945
+    disable = { 'dart' }
   },
   indent = {
-    enable = true
-  }
+    enable = true,
+    disable = { 'dart' }
+  },
 }

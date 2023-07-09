@@ -12,6 +12,10 @@ lsp_saga.setup({
     on_insert = true,
     on_insert_follow = false
   },
+  symbol_in_winbar = {
+    separator = " > ",
+    respect_root = true
+  }
 })
 
 mason.setup()
@@ -57,13 +61,13 @@ lsp_zero.on_attach(function(_, bufnr)
   -- <C-w>w
   vim.keymap.set('n', 'K', "<CMD>Lspsaga hover_doc ++keep<CR>", opts)
 
-  -- goto: Definition
-  -- vim.keymap.set('n', 'gd', "<CMD>Lspsaga goto_definition<CR>", opts)
-  vim.keymap.set('n', 'gd', "<CMD>Lspsaga peek_definition<CR>", opts)
+  -- peak: Type/Definition <C-t> to jump back
+  vim.keymap.set('n', 'pd', "<CMD>Lspsaga peek_definition<CR>", opts)
+  vim.keymap.set('n', 'pt', "<CMD>Lspsaga peek_type_definition<CR>", opts)
 
-  -- goto: Type Definition <C-t>
-  -- vim.keymap.set('n', 'gt', "<CMD>Lspsaga goto_type_definition<CR>", opts)
-  vim.keymap.set('n', 'gt', "<CMD>Lspsaga peek_type_definition<CR>", opts)
+  -- goto: Type/Definition
+  vim.keymap.set('n', 'gd', "<CMD>Lspsaga goto_definition<CR>", opts)
+  vim.keymap.set('n', 'gt', "<CMD>Lspsaga goto_type_definition<CR>", opts)
 
   -- goto: outline (toggle)
   vim.keymap.set('n', 'go', "<CMD>Lspsaga outline<CR>", opts)
@@ -72,6 +76,10 @@ lsp_zero.on_attach(function(_, bufnr)
   vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
   vim.keymap.set('n', '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
+
+  -- call hirarchy
+  vim.keymap.set('n', '<leader>ci', "<CMD>Lspsaga incoming_calls<CR>")
+  vim.keymap.set('n', '<leader>co', "<CMD>Lspsaga outgoing_calls<CR>")
 
   -- Diagnostics ------------------------------------------------
 

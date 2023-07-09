@@ -155,7 +155,17 @@ local plugins = {
   'vim-scripts/BufOnly.vim',
   'airblade/vim-rooter',
   "folke/which-key.nvim",
-  'metakirby5/codi.vim'
+  'metakirby5/codi.vim',
+
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+    },
+    config = true,
+  }
 }
 
 local opts = {}
