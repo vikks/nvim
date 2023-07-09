@@ -40,7 +40,8 @@ local fmt_opts = function()
       },
       ['prisma-language-server'] = { 'prisma' },
       ['astro-language-server'] = { 'astro' },
-      ['solargraph'] = { 'ruby' }
+      ['solargraph'] = { 'ruby' },
+      ['dartls'] = { 'dart' }
     }
   }
 end
