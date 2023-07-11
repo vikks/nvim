@@ -68,3 +68,7 @@ vim.keymap.set("n", "<leader>b", "<CMD>buffers<CR>")
 
 -- Close all buffers except current
 vim.keymap.set('n', "<leader>bo", "<CMD>BufOnly<CR>")
+
+---------------- Debugger -----------------------
+vim.keymap.set("n", "<leader>db", "<CMD> DapToggleBreakpoint <CR>")
+vim.keymap.set("n", "<leader>ds", "<CMD> DapContinue <CR>")

@@ -19,6 +19,7 @@ mason_null_ls.setup({
     'lua_ls',
     'prettierd',
     'prisma-language-server',
+    'clang-format'
   },
   automatic_installation = false,
 })
@@ -41,7 +42,8 @@ local fmt_opts = function()
       ['prisma-language-server'] = { 'prisma' },
       ['astro-language-server'] = { 'astro' },
       ['solargraph'] = { 'ruby' },
-      ['dartls'] = { 'dart' }
+      ['dartls'] = { 'dart' },
+      ['clangd'] = { 'cpp' }
     }
   }
 end

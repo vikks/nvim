@@ -2,23 +2,6 @@
 -- Diagnostics (https://dev.to/vonheikemen/make-lsp-zeronvim-coexists-with-other-plugins-instead-of-controlling-them-2i80)
 --------------------------------------------
 local lsp_zero = require('lsp-zero')
-local lsp_config = require('lspconfig')
-local mason = require('mason')
-local mason_lspconfig = require("mason-lspconfig")
-
-mason.setup()
-
-mason_lspconfig.setup({
-  -- Manually add lsp, linters, daps here
-  ensure_installed = {
-    'tsserver',
-    'eslint',
-    'solargraph',
-    'lua_ls',
-    'tailwindcss',
-    'astro'
-  }
-})
 
 -- Configure LSP Servers
 lsp_zero.extend_lspconfig({
@@ -119,29 +102,3 @@ vim.diagnostic.config(lsp_zero.defaults.diagnostics({
   --   source = 'always'
   -- }
 }))
-
-
--- Use for loop and call setup or use setup_handlers and call setup
--- local get_servers = mason_lspconfig.get_installed_servers
--- for _, server_name in ipairs(get_servers()) do
--- lsp_config[server_name].setup({})
--- end
-
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    lsp_config[server_name].setup({})
-  end,
-
-  -- language specific configutaion can be added as below
-  ['lua_ls'] = function()
-    lsp_config.lua_ls.setup({
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      },
-    })
-  end
-})

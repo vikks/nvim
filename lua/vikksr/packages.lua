@@ -129,8 +129,20 @@ local plugins = {
   -- 'christoomey/vim-tmux-navigator',
 
   -- debugging
-  -- 'mfussenegger/nvim-dap',
-  -- 'rcarriga/nvim-dap-ui',
+  'mfussenegger/nvim-dap',
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      'mfussenegger/nvim-dap'
+    }
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      'mfussenegger/nvim-dap',
+    }
+  },
   -- 'simrat39/rust-tools.nvim',
 
   -- Linters
@@ -156,13 +168,14 @@ local plugins = {
   'airblade/vim-rooter',
   "folke/which-key.nvim",
   'metakirby5/codi.vim',
+  { "folke/neodev.nvim", opts = {} },
 
   {
     'akinsho/flutter-tools.nvim',
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
   }
