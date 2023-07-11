@@ -1,4 +1,5 @@
 local dap, dapui = require("dap"), require("dapui")
+
 require('mason').setup()
 require('mason-nvim-dap').setup({
   handlers = {}
