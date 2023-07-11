@@ -3,6 +3,9 @@ local lsp_config = require('lspconfig')
 local mason = require('mason')
 local mason_lspconfig = require("mason-lspconfig")
 
+-- IMPORTANT: neodev needs to be setup before lsp_config
+require('neodev').setup({})
+
 -- mason.setup()
 
 mason_lspconfig.setup({
@@ -37,6 +40,9 @@ mason_lspconfig.setup_handlers({
         Lua = {
           diagnostics = {
             globals = { 'vim' }
+          },
+          completion = {
+            callSnippet = "Replace"
           }
         }
       },
