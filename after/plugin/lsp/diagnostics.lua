@@ -5,18 +5,6 @@ local lsp_zero = require('lsp-zero')
 local lsp_config = require('lspconfig')
 local mason = require('mason')
 local mason_lspconfig = require("mason-lspconfig")
-local lsp_saga = require("lspsaga")
-
-lsp_saga.setup({
-  diagnostic = {
-    on_insert = true,
-    on_insert_follow = false
-  },
-  symbol_in_winbar = {
-    separator = " > ",
-    respect_root = true
-  }
-})
 
 mason.setup()
 
@@ -111,6 +99,8 @@ lsp_zero.on_attach(function(_, bufnr)
   vim.keymap.set('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
+
+  -- Format
   vim.keymap.set("n", "<leader>f", function()
     -- vim.lsp.buf.format()
     vim.lsp.buf.format({ async = true, timeout_ms = 3000 })
